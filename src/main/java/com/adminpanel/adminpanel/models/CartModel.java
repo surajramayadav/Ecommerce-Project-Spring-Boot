@@ -12,13 +12,11 @@ public class CartModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cart_id;
-    @ManyToOne
-    @JoinColumn(name = "user",nullable = false)
+    @OneToOne
+    @JoinColumn(name = "user_id",nullable = false)
     private UserModel userModel;
 
-    @OneToOne
-    @JoinColumn(name = "product",nullable = false)
-    private ProductModel productModel;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
@@ -26,9 +24,9 @@ public class CartModel {
 
     public CartModel() {}
 
-    public CartModel(UserModel userModel, ProductModel productModel, Date timestamp) {
+    public CartModel(UserModel userModel, Date timestamp) {
         this.userModel = userModel;
-        this.productModel = productModel;
+
         this.timestamp = timestamp;
     }
 
@@ -48,13 +46,7 @@ public class CartModel {
         this.userModel = userModel;
     }
 
-    public ProductModel getProductModel() {
-        return productModel;
-    }
 
-    public void setProductModel(ProductModel productModel) {
-        this.productModel = productModel;
-    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -64,8 +56,10 @@ public class CartModel {
         this.timestamp = timestamp;
     }
 
+
+
     @Override
     public String toString() {
-        return  "Cart [cart_id="+cart_id+",userModel="+userModel+",productModel="+productModel+",timestamp="+timestamp+"]";
+        return  "Cart [cart_id="+cart_id+",userModel="+userModel+",timestamp="+timestamp+"]";
     }
 }

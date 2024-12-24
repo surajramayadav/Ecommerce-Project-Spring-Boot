@@ -38,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductModel addProduct(ProductModel productModel) {
+        System.out.println(productModel);
         return productRepository.save(productModel);
     }
 
