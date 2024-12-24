@@ -17,7 +17,7 @@ public class PaymentModel {
     private boolean payment_status;
 
     @ManyToOne
-    @JoinColumn(name = "cart",nullable = false)
+    @JoinColumn(name = "user_",nullable = false)
     private CartModel cartModel;
 
     @CreationTimestamp
